@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCIC Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        #inputAndButton {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="password"] {
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #confirmButton {
+            padding: 17px 15px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #videoContainer {
+            display: none;
+            padding: 25px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        #videoContainer h3 {
+            color: #007bff;
+        }
+
+        video {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        #errorMessage {
+            font-size: 20px;
+            color: #dc3545;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Enter the password to view and download the defense video of HBUT-Wuhan CCIC.</h2>
+        <div id="inputAndButton">
+            <input type="password" id="passwordInput">
+            <button id="confirmButton" onclick="checkPassword()">Confirm</button>
+        </div>
+
+        <div id="videoContainer">
+            <h3>Video of HBUT-Wuhan CCIC.mp4</h3>
+            <video controls width="640" height="480">
+                <source src="CCIC.mp4" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+        </div>
+
+        <div id="errorMessage">Password error</div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('passwordInput').value;
+            if (password === 'HBUT-Wuhan') {
+                document.getElementById('videoContainer').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+            } else {
+                document.getElementById('videoContainer').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                setTimeout(function () {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+
+</html>
